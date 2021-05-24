@@ -1,0 +1,6 @@
+{
+    "env": {
+        "allureResultsPath": "allure-results"
+    },
+    "video": false
+}

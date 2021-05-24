@@ -1,0 +1,8 @@
+# reports
+allure-report/
+allure-results/
+cypress/plugins/
+cypress/integration/examples/
+
+#readme
+README.md

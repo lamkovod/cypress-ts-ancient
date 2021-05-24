@@ -1,0 +1,50 @@
+{
+    "name": "ancient-cypress-ts",
+    "version": "0.0.1",
+    "description": "Cypress TS Tests",
+    "keywords": [
+        "Cypress",
+        "TypeScript",
+        "Allure"
+    ],
+    "license": "LICENSE.md",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "cypress:open": "cypress open",
+        "cypress:electron": "cypress run",
+        "cypress:chrome": "cypress run --browser chrome",
+        "cypress": "cypress",
+        "compile": "tsc --incremental",
+        "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+        "prettier": "prettier --check .",
+        "format": "prettier --write ."
+    },
+    "dependencies": {
+        "cypress": "^7.4.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "prettier": "^2.3.0",
+        "typescript": "^4.2.4"
+    },
+    "devDependencies": {
+        "@shelex/cypress-allure-plugin": "^2.5.1",
+        "@typescript-eslint/eslint-plugin": "^4.25.0",
+        "@typescript-eslint/parser": "^4.25.0",
+        "eslint": "^7.27.0",
+        "eslint-plugin-chai-friendly": "^0.7.1",
+        "eslint-plugin-cypress": "^2.11.3",
+        "husky": "^4.3.8",
+        "lint-staged": "^11.0.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts}": [
+            "prettier --write .",
+            "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+        ]
+    }
+}

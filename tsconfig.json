@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "lib": ["dom"],
+        "sourceMap": false,
+        "target": "es2019",
+        "strict": true,
+        "removeComments": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "types": ["cypress"],
+        "skipLibCheck": true
+    }
+}
