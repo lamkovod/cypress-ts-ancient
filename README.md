@@ -1,3 +1,5 @@
 # cypress-ts-ancient
 
-Cypress TS Project with Allure Pages for Ancient
+Cypress TS Project with Report Pages for Ancient
+
+Published report: https://lamkovod.github.io/cypress-ts-ancient/

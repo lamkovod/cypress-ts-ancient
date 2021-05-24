@@ -2,6 +2,8 @@
     "name": "ancient-cypress-ts",
     "version": "0.0.1",
     "description": "Cypress TS Tests",
+    "author": "Aleksandr Vodolazko",
+    "main": "index.js",
     "keywords": [
         "Cypress",
         "TypeScript",
@@ -17,7 +19,9 @@
         "compile": "tsc --incremental",
         "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
         "prettier": "prettier --check .",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
+        "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
     },
     "dependencies": {
         "cypress": "^7.4.0",
@@ -34,7 +38,12 @@
         "eslint-plugin-chai-friendly": "^0.7.1",
         "eslint-plugin-cypress": "^2.11.3",
         "husky": "^4.3.8",
-        "lint-staged": "^11.0.0"
+        "lint-staged": "^11.0.0",
+        "cypress-multi-reporters": "^1.5.0",
+        "mocha": "^8.4.0",
+        "mochawesome": "^6.2.2",
+        "mochawesome-merge": "^4.2.0",
+        "mochawesome-report-generator": "^5.2.0"
     },
     "husky": {
         "hooks": {

@@ -5,49 +5,28 @@ on: push
 jobs:
     chrome-headless:
         runs-on: ubuntu-18.04
+        container: cypress/browsers:node14.16.0-chrome90-ff88
         steps:
             - name: Checkout
               uses: actions/checkout@v1
 
+            - name: Install the project
+              run: npm ci
+
             - name: Headless Chrome
-              uses: cypress-io/github-action@v2
               timeout-minutes: 5
               continue-on-error: true
-              with:
-                  browser: chrome
-                  headless: true
-              env:
-                  allure: true
-            
-            - name: Upload allure results
-              uses: actions/upload-artifact@v2
-              with:
-                name: allure
-                path: allure-results/
+              run: npm run cypress:chrome
 
-    allure-report:
-        runs-on: ubuntu-18.04
-        steps:
-            - name: Get Allure history
-              uses: actions/checkout@v2
-              if: always()
-              continue-on-error: true
-              with:
-                  ref: gh-pages
-                  path: gh-pages
-            
-            - name: Download allure results
-              uses: actions/download-artifact@v2
-              with:
-                name: allure
+            - name: Copy test execution videos
+              run: |
+                  mkdir public
+                  cp -r cypress/videos public/videos
 
-            - name: Allure Report action from marketplace
-              uses: simple-elf/allure-report-action@master
-              if: always()
-              with:
-                  allure_results: allure-results
-                  allure_history: allure-history
-                  keep_reports: 20
+            - name: Generate Report
+              run: |
+                  npm run report:merge
+                  npm run report:generate
 
             - name: Deploy report to Github Pages
               if: always()
@@ -55,4 +34,4 @@ jobs:
               env:
                   PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   PUBLISH_BRANCH: gh-pages
-                  PUBLISH_DIR: allure-history
+                  PUBLISH_DIR: ./public
