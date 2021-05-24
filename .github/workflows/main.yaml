@@ -12,12 +12,22 @@ jobs:
             - name: Headless Chrome
               uses: cypress-io/github-action@v2
               timeout-minutes: 5
+              continue-on-error: true
               with:
                   browser: chrome
                   headless: true
               env:
                   allure: true
+            
+            - name: Upload allure results
+              uses: actions/upload-artifact@v2
+              with:
+                name: allure
+                path: allure-results/
 
+    allure-report:
+        runs-on: ubuntu-18.04
+        steps:
             - name: Get Allure history
               uses: actions/checkout@v2
               if: always()
@@ -25,6 +35,11 @@ jobs:
               with:
                   ref: gh-pages
                   path: gh-pages
+            
+            - name: Download allure results
+              uses: actions/download-artifact@v2
+              with:
+                name: allure
 
             - name: Allure Report action from marketplace
               uses: simple-elf/allure-report-action@master

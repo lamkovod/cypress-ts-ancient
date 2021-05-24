@@ -1,3 +1,3 @@
 # cypress-ts-ancient
 
-Cypress TS Project for Ancient
+Cypress TS Project with Allure Pages for Ancient
