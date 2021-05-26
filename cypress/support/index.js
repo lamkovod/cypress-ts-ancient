@@ -22,9 +22,10 @@ import addContext from 'mochawesome/addContext';
 // require('./commands')
 
 Cypress.on('test:after:run', (test) => {
-    let videoName = Cypress.spec.name;
-    videoName = videoName.replace('/.js.*', '.js');
-    const videoUrl = 'videos/' + videoName + '.mp4';
-
-    addContext({ test }, videoUrl);
+    if (test.state === 'failed') {
+        let videoName = Cypress.spec.name;
+        videoName = videoName.replace('/.ts.*', '.ts');
+        const videoUrl = 'videos/' + videoName + '.mp4';
+        addContext({ test }, videoUrl);
+    }
 });

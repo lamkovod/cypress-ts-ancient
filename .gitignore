@@ -12,12 +12,16 @@ logs
 # reports
 allure-report/
 allure-results/
+public
+index.json
+cypress/results
 
 # Optional npm cache directory
 .npm
 
 # Dependency directory
 node_modules
+
 cypress/videos
 cypress/screenshots
 cypress/integration/examples

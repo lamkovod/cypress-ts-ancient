@@ -1,4 +1,5 @@
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+const del = require('del');
 /// <reference types="cypress" />
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -19,5 +20,11 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
     allureWriter(on, config);
+
+    on('after:spec', (spec, results) => {
+        if (results.stats.failures === 0 && results.video) {
+            return del(results.video);
+        }
+    });
     return config;
 };

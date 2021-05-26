@@ -3,6 +3,8 @@ allure-report/
 allure-results/
 cypress/plugins/
 cypress/integration/examples/
+public/
+node_modules/
 
 #readme
 README.md
