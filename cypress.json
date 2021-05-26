@@ -1,4 +1,6 @@
 {
+    "baseUrl": "https://www.csgoroll.com/en",
+    "integrationFolder": "cypress/integration/dice",
     "env": {
         "allureResultsPath": "allure-results"
     },
