@@ -23,7 +23,7 @@ class DiceWagerComponent {
     }
 
     get profitBox() {
-        return cy.get('.profit-box text-success');
+        return cy.get('.profit-box.text-success');
     }
 
     get formButtons() {

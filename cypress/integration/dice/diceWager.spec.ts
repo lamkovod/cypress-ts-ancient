@@ -60,7 +60,7 @@ describe('Dice Wager', () => {
             diceActions.submitButton('disabled');
         });
 
-        it(`Roll Dice button disabled for positive number value`, () => {
+        it(`Roll Dice button enabled for positive number value`, () => {
             diceActions.setBetAmount('25');
             diceActions.submitButton('enabled');
         });
